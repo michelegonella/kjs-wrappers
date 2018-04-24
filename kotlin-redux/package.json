@@ -1,0 +1,18 @@
+{
+  "name": "@nominanuda/kotlin-redux",
+  "version": "$redux_version",
+  "description": "Kotlin wrapper for Redux library",
+  "files": [
+    "build/classes",
+    "package.json",
+    "README.md"
+  ],
+  "main": "build/classes/main/kotlin-redux.js",
+  "repository": "https://github.com/nominanuda/kjs-wrappers",
+  "peerDependencies": {
+    "kotlin": "^$kotlin_version",
+    "redux": "^4.0.0"
+  },
+  "author": "Michele Gonella",
+  "license": "Apache-2-0"
+}

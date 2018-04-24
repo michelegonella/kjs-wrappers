@@ -1,0 +1,5 @@
+rootProject.name = 'kjs-wrappers'
+
+include 'kjs-externals'
+include 'kotlin-redux'
+include 'kotlin-react-native'

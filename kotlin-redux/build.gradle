@@ -1,0 +1,8 @@
+applyKotlinJS()
+
+configurePublishingWithNPM(redux_version)
+
+dependencies {
+//TODO externals    compile project(":kotlin-react")
+}
+

@@ -1,0 +1,16 @@
+ext {
+    // External dependencies
+    kotlin_version = '1.2.40'
+    node_plugin_version = '1.2.0'
+    bintray_plugin_version = '1.8.0'
+    kotlinx_html_version = '0.6.9'
+    kotlinext_version = '1.0.1-pre.27'
+
+    //kjs-externals
+    kjs_externals_version = '1.0.0-pre.1'
+
+    // kotlin-redux
+    redux_version = '1.0.0-pre.1'
+
+    react_native_version = '1.0.0-pre.1'
+}

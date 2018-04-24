@@ -1,0 +1,19 @@
+applyKotlinJS()
+
+dependencies {
+/*
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-html-js:$kotlinx_html_version"
+*/
+    compile 'org.jetbrains:kotlin-react:16.3.1-pre.25-kotlin-1.2.30'
+
+    compile 'org.jetbrains:kotlin-extensions:1.0.1-pre.25-kotlin-1.2.30'
+/*
+    compile 'org.jetbrains:kotlin-react:16.3.1-pre.25-kotlin-1.2.30'
+    compile 'org.jetbrains:kotlin-react-dom:16.3.1-pre.25-kotlin-1.2.30'
+*/
+
+}
+
+
+
