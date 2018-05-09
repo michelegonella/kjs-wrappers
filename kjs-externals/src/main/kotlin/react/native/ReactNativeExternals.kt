@@ -53,7 +53,7 @@ external interface TextProps : RProps {
 
 }
 
-external val Text : RClass<ViewProps>
+external val Text : RClass<TextProps>
 
 /*
 open external class Text : Component<TextProps, RState> {
@@ -64,4 +64,11 @@ open external class Text : Component<TextProps, RState> {
 //external object Text
 external object Button
 
+external interface DrawerLayoutAndroidProps : RProps {
+    var drawerWidth : Int
+    //var drawerPosition={DrawerLayoutAndroid.positions.Left}
+    var renderNavigationView : Any//={() => navigationView}
+}
+
+external val DrawerLayoutAndroid : RClass<DrawerLayoutAndroidProps>
 

@@ -1,5 +1,7 @@
 applyKotlinJS()
 
+configurePublishingWithNPM(kjs_externals_version)
+
 dependencies {
 /*
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
@@ -12,7 +14,6 @@ dependencies {
     compile 'org.jetbrains:kotlin-react:16.3.1-pre.25-kotlin-1.2.30'
     compile 'org.jetbrains:kotlin-react-dom:16.3.1-pre.25-kotlin-1.2.30'
 */
-
 }
 
 

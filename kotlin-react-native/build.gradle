@@ -3,7 +3,7 @@ applyKotlinJS()
 configurePublishingWithNPM(react_native_version)
 
 dependencies {
-    project(':kjs-externals')
+    compile project(':kjs-externals')
     compile 'org.jetbrains:kotlin-react:16.3.1-pre.25-kotlin-1.2.30'
     //compile project(":kotlin-react")
 }
