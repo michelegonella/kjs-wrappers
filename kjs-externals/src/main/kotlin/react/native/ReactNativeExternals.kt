@@ -38,9 +38,12 @@ external object Platform {
 
   fun <T> select(select: PlatformSelectConfig<T>): T
 }
-external interface ViewProps : RProps {
 
+external interface StylableProps : RProps {
+    var style : Any?
 }
+
+external interface ViewProps : StylableProps
 
 external val View : RClass<ViewProps>
 /*
@@ -49,7 +52,7 @@ open external class View : Component<ViewProps, RState> {
 }
 */
 
-external interface TextProps : RProps {
+external interface TextProps : StylableProps {
 
 }
 
@@ -64,11 +67,18 @@ open external class Text : Component<TextProps, RState> {
 //external object Text
 external object Button
 
-external interface DrawerLayoutAndroidProps : RProps {
+external interface DrawerLayoutAndroidProps : StylableProps {
     var drawerWidth : Int
     //var drawerPosition={DrawerLayoutAndroid.positions.Left}
     var renderNavigationView : Any//={() => navigationView}
 }
 
 external val DrawerLayoutAndroid : RClass<DrawerLayoutAndroidProps>
+
+external interface ImageProps : StylableProps {
+    var source : Any
+}
+
+external val Image : RClass<ImageProps>
+
 
