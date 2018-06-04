@@ -7,6 +7,10 @@ import react.RClass
 import react.RComponent
 import react.RProps
 
+//external object ReactNative {
+    external    fun findNodeHandle(ref: Any) : Any
+//}
+
 external object AppRegistry {
     fun <T : RComponent<*, *>> registerComponent(name: String, createComponent: () -> JsClass<T>)
 }
@@ -16,9 +20,6 @@ external interface PlatformSelectConfig<T> {
     var android: T
 }
 
-external object StyleSheet {
-    fun create(style: dynamic): dynamic
-}
 
 external object Platform {
 /**
@@ -39,9 +40,6 @@ external object Platform {
   fun <T> select(select: PlatformSelectConfig<T>): T
 }
 
-external interface StylableProps : RProps {
-    var style : Any?
-}
 
 external interface ViewProps : StylableProps
 
@@ -80,5 +78,142 @@ external interface ImageProps : StylableProps {
 }
 
 external val Image : RClass<ImageProps>
+
+
+external interface TouchableHighlightProps : RProps {
+    var onPress : () -> Any?
+}
+
+external val TouchableHighlight : RClass<TouchableHighlightProps>
+
+
+//// STYLE
+
+external interface StylableProps : RProps {
+    var style : Style?
+}
+
+external object StyleSheet {
+    fun create(style: dynamic): dynamic
+}
+
+external interface ViewStyle {
+    var borderRightColor: String
+    var backfaceVisibility: String
+    var borderBottomColor: String
+    var borderBottomEndRadius: String
+    var borderBottomLeftRadius: String
+    var borderBottomRightRadius: String
+    var borderBottomStartRadius: String
+    var borderBottomWidth: String
+    var borderColor: String
+    var borderEndColor: String
+    var borderLeftColor: String
+    var borderLeftWidth: String
+    var borderRadius: String
+    var backgroundColor: String
+    var borderRightWidth: String
+    var borderStartColor: String
+    var borderStyle: String
+    var borderTopColor: String
+    var borderTopEndRadius: String
+    var borderTopLeftRadius: String
+    var borderTopRightRadius: String
+    var borderTopStartRadius: String
+    var borderTopWidth: String
+    var borderWidth: String
+    var opacity: String
+    var elevation: String
+}
+
+external interface ShadowStyle {
+    var shadowColor: String
+    var shadowOffset: String
+    var shadowOpacity: String
+    var shadowRadius: String
+}
+
+
+external interface LayoutStyle {
+    var alignContent: String
+    var alignItems: String
+    var alignSelf: String
+    var aspectRatio: String
+    var borderBottomWidth: String
+    var borderEndWidth: String
+    var borderLeftWidth: String
+    var borderRightWidth: String
+    var borderStartWidth: String
+    var borderTopWidth: String
+    var borderWidth: String
+    var bottom: String
+    var direction: String
+    var display: String
+    var end: String
+    var flex : Int
+    var flexBasis: String
+    var flexDirection : String
+    var flexGrow: String
+    var flexShrink: String
+    var flexWrap: String
+    var height: String
+    var justifyContent: String
+    var left: String
+    var margin: String
+    var marginBottom: String
+    var marginEnd: String
+    var marginHorizontal: String
+    var marginLeft: String
+    var marginRight: String
+    var marginStart: String
+    var marginTop: String
+    var marginVertical: String
+    var maxHeight: String
+    var maxWidth: String
+    var minHeight: String
+    var minWidth: String
+    var overflow: String
+    var padding: String
+    var paddingBottom: String
+    var paddingEnd: String
+    var paddingHorizontal: String
+    var paddingLeft: Int
+    var paddingRight: String
+    var paddingStart: String
+    var paddingTop: String
+    var paddingVertical: String
+    var position: String
+    var right: String
+    var start: String
+    var top: String
+    var width: String
+    var zIndex: String
+}
+
+external interface TextStyle {
+    var textShadowOffset: String
+    var color: String
+    var fontSize: Int
+    var fontStyle: String
+    var fontWeight: String
+    var lineHeight: String
+    var textAlign: String
+    var textDecorationLine: String
+    var textShadowColor: String
+    var fontFamily: String
+    var textShadowRadius: String
+    var includeFontPadding: String
+    var textAlignVertical: String
+    var fontVariant: String
+    var letterSpacing: String
+    var textDecorationColor: String
+    var textDecorationStyle: String
+    var writingDirection: String
+}
+
+
+external interface Style : TextStyle, LayoutStyle, ShadowStyle {
+    var backgroundColor : String
+}
 
 

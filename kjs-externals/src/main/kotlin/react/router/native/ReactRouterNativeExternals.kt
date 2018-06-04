@@ -20,6 +20,7 @@ external val Route : RClass<RouteProps>
 
 external interface LinkProps : RProps {
     var to :String
+    var component : Any?//A component for making Link respond properly to touches. Typically will be one React Native’s “touchable” components (TouchableHighlight, TouchableOpacity, etc). All props passed to Link will be passed along to this component. Defaults to TouchableHighlight.
 }
 external val Link : RClass<LinkProps>
 
