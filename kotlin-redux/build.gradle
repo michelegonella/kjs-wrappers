@@ -4,5 +4,7 @@ configurePublishingWithNPM(redux_version)
 
 dependencies {
 //TODO externals    compile project(":kotlin-react")
+    compile project(':kjs-externals')
+    compile 'org.jetbrains:kotlin-react:16.3.1-pre.25-kotlin-1.2.30'
 }
 

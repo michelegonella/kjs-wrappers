@@ -105,14 +105,14 @@ external interface ViewStyle {
     var borderBottomLeftRadius: String
     var borderBottomRightRadius: String
     var borderBottomStartRadius: String
-    var borderBottomWidth: String
+    var borderBottomWidth: Int
     var borderColor: String
     var borderEndColor: String
     var borderLeftColor: String
-    var borderLeftWidth: String
+    var borderLeftWidth: Int
     var borderRadius: String
     var backgroundColor: String
-    var borderRightWidth: String
+    var borderRightWidth: Int
     var borderStartColor: String
     var borderStyle: String
     var borderTopColor: String
@@ -120,8 +120,8 @@ external interface ViewStyle {
     var borderTopLeftRadius: String
     var borderTopRightRadius: String
     var borderTopStartRadius: String
-    var borderTopWidth: String
-    var borderWidth: String
+    var borderTopWidth: Int
+    var borderWidth: Int
     var opacity: String
     var elevation: String
 }
@@ -135,59 +135,59 @@ external interface ShadowStyle {
 
 
 external interface LayoutStyle {
-    var alignContent: String
-    var alignItems: String
-    var alignSelf: String
-    var aspectRatio: String
-    var borderBottomWidth: String
-    var borderEndWidth: String
-    var borderLeftWidth: String
-    var borderRightWidth: String
-    var borderStartWidth: String
-    var borderTopWidth: String
-    var borderWidth: String
-    var bottom: String
-    var direction: String
-    var display: String
-    var end: String
+    var alignContent: String//enum('flex-start', 'flex-end', 'center', 'stretch', 'space-between', 'space-around')
+    var alignItems: String//enum('flex-start', 'flex-end', 'center', 'stretch', 'baseline')
+    var alignSelf: String//enum('auto', 'flex-start', 'flex-end', 'center', 'stretch', 'baseline')
+    var aspectRatio: Number
+    var borderBottomWidth: Int
+    var borderEndWidth: Int
+    var borderLeftWidth: Int
+    var borderRightWidth: Int
+    var borderStartWidth: Int
+    var borderTopWidth: Int
+    var borderWidth: Int
+    var bottom: Any//number,string points or percentages
+    var direction: String//enum('inherit', 'ltr', 'rtl')
+    var display: String//enum('none', 'flex')
+    var end: Any//number, ,string
     var flex : Int
-    var flexBasis: String
-    var flexDirection : String
-    var flexGrow: String
-    var flexShrink: String
-    var flexWrap: String
-    var height: String
-    var justifyContent: String
-    var left: String
-    var margin: String
-    var marginBottom: String
-    var marginEnd: String
-    var marginHorizontal: String
-    var marginLeft: String
-    var marginRight: String
-    var marginStart: String
-    var marginTop: String
-    var marginVertical: String
-    var maxHeight: String
-    var maxWidth: String
-    var minHeight: String
-    var minWidth: String
-    var overflow: String
-    var padding: String
-    var paddingBottom: String
-    var paddingEnd: String
-    var paddingHorizontal: String
-    var paddingLeft: Int
-    var paddingRight: String
-    var paddingStart: String
-    var paddingTop: String
-    var paddingVertical: String
-    var position: String
-    var right: String
-    var start: String
-    var top: String
-    var width: String
-    var zIndex: String
+    var flexBasis: Any//number, ,string
+    var flexDirection : String//enum('row', 'row-reverse', 'column', 'column-reverse')
+    var flexGrow: Int
+    var flexShrink: Int
+    var flexWrap: String//enum('wrap', 'nowrap')
+    var height: Any//points or percentages
+    var justifyContent: String//enum('flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly')
+    var left: Any//points or percentages
+    var margin: Any//points or percentages
+    var marginBottom: Any//points or percentages
+    var marginEnd: Any//points or percentages
+    var marginHorizontal: Any//points or percentages
+    var marginLeft: Any//points or percentages
+    var marginRight: Any//points or percentages
+    var marginStart: Any//points or percentages
+    var marginTop: Any//points or percentages
+    var marginVertical: Any//points or percentages
+    var maxHeight: Any//points or percentages
+    var maxWidth: Any//points or percentages
+    var minHeight: Any//points or percentages
+    var minWidth: Any//points or percentages
+    var overflow: String//enum('visible', 'hidden', 'scroll')
+    var padding: Any//points or percentages
+    var paddingBottom: Any//points or percentages
+    var paddingEnd: Any//points or percentages
+    var paddingHorizontal: Any//points or percentages
+    var paddingLeft: Any//points or percentages
+    var paddingRight: Any//points or percentages
+    var paddingStart: Any//points or percentages
+    var paddingTop: Any//points or percentages
+    var paddingVertical: Any//points or percentages
+    var position: String//enum('absolute', 'relative')
+    var right: Any//points or percentages
+    var start: Any//points or percentages
+    var top: Any//points or percentages
+    var width: Any//points or percentages
+    var zIndex: Int
 }
 
 external interface TextStyle {
@@ -212,8 +212,6 @@ external interface TextStyle {
 }
 
 
-external interface Style : TextStyle, LayoutStyle, ShadowStyle {
-    var backgroundColor : String
-}
+external interface Style : ViewStyle, TextStyle, LayoutStyle, ShadowStyle
 
 

@@ -1,9 +1,7 @@
-//@file:JsModule("react-native-web")//dist/exports
-//@file:JsModule("react-native")
-
-package react.native
+package com.nominanuda.krui.react.native
 
 import kotlinext.js.jsObject
+import react.native.Style
 
 inline fun mkStyle(builder: Style.() -> Unit): Style = jsObject(builder)
 
