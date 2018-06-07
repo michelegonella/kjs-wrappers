@@ -1,4 +1,3 @@
-//@file:JsModule("react-native-web")//dist/exports
 @file:JsModule("react-native")
 
 package react.native
@@ -7,9 +6,25 @@ import react.RClass
 import react.RComponent
 import react.RProps
 
-//external object ReactNative {
-    external    fun findNodeHandle(ref: Any) : Any
-//}
+external interface WithAndHeight {
+    var width : Number
+    var height : Number
+}
+
+external object Dimensions {
+    fun get(dim/*window|screen*/ : String): WithAndHeight
+    fun addEventListener(type: String/*change*/, handler : (dynamic/*object with window and screen of type WithAndHeight*/) -> Unit)
+    fun removeEventListener(type: String, handler : (dynamic) -> Unit)
+}
+
+external object PixelRatio {
+    fun get() : Double//1 -> 160 dpi .....
+    fun getFontScale() : Number//
+    fun getPixelSizeForLayoutSize(layoutSize : Number) : Int
+    fun roundToNearestPixel(layoutSize : Number) : Double
+}
+
+external fun findNodeHandle(ref: Any) : Any
 
 external object AppRegistry {
     fun <T : RComponent<*, *>> registerComponent(name: String, createComponent: () -> JsClass<T>)
@@ -74,10 +89,37 @@ external interface DrawerLayoutAndroidProps : StylableProps {
 external val DrawerLayoutAndroid : RClass<DrawerLayoutAndroidProps>
 
 external interface ImageProps : StylableProps {
+    var blurRadius : Number
+    var onLayout : (dynamic?) -> Unit//{nativeEvent: {layout: {x, y, width, height}}}.
+    var onLoad : (dynamic?) -> Unit
+    var onLoadEnd : (dynamic?) -> Unit
+    var onLoadStart : (dynamic?) -> Unit
+    var resizeMode : String //enum('cover', 'contain', 'stretch', 'repeat', 'center')
     var source : Any
+    var loadingIndicatorSource : Array<Any>
+    var onError : (dynamic?) -> Unit//{nativeEvent: {error}}.
+    var testID : String
+    var resizeMethod : String//enum('auto', 'resize', 'scale')
+    var accessibilityLabel : Any//iOS
+    var accessible : Boolean//iOS
+    var capInsets : dynamic//object: {top: number, left: number, bottom: number, right: number} iOS
+    var defaultSource : Any//object, number iOS
+    var onPartialLoad : (dynamic?) -> Unit//iOS
+    var onProgress : (dynamic?) -> Unit//iOS {nativeEvent: {loaded, total}}.
+    var fadeDuration : Int //Android only. By default, it is 300ms.
 }
 
 external val Image : RClass<ImageProps>
+//{
+//    override var displayName: String? = definedExternally
+//    fun getSize(uri : String, success : () -> Unit, failure : ((dynamic) -> Unit)? = definedExternally) :  Unit
+//    fun prefetch(url: String) : Long?//Android Number iOS Unit
+//    fun abortPrefetch(requestId : Long)//Android
+//    fun queryCache(urls :Array<String>) : dynamic// Returns a mapping from URL to cache status, such as "disk" or "memory". If a requested URL is not in the mapping, it means it's not in the cache.
+//    fun resolveAssetSource(
+//            source : Any//A number (opaque type returned by require('./foo.png')) or an ImageSource. ImageSource is an object like { uri: '<http location || file path>' }
+//    ) : dynamic //Resolves an asset reference into an object which has the properties uri, width, and height.
+//}
 
 
 external interface TouchableHighlightProps : RProps {
@@ -97,40 +139,62 @@ external object StyleSheet {
     fun create(style: dynamic): dynamic
 }
 
+
+external interface TransformStyle {
+    var transforms : Array<dynamic>
+}
+
+external interface ImageStyle {
+    var borderTopRightRadius: Number
+    var backfaceVisibility: String//enum('visible', 'hidden')
+    var borderBottomLeftRadius: Number
+    var borderBottomRightRadius: Number
+    var borderColor: String
+    var borderRadius: Number
+    var borderTopLeftRadius: Number
+    var backgroundColor: String
+    var borderWidth: Int
+    var opacity: Number
+    var overflow: String//enum('visible', 'hidden')
+    var resizeMode: String// contain, cover, stretch, center, repeat
+    var tintColor: String
+    var overlayColor: String //(Android)
+}
+
 external interface ViewStyle {
     var borderRightColor: String
     var backfaceVisibility: String
     var borderBottomColor: String
-    var borderBottomEndRadius: String
-    var borderBottomLeftRadius: String
-    var borderBottomRightRadius: String
-    var borderBottomStartRadius: String
+    var borderBottomEndRadius: Number
+    var borderBottomLeftRadius: Number
+    var borderBottomRightRadius: Number
+    var borderBottomStartRadius: Number
     var borderBottomWidth: Int
     var borderColor: String
     var borderEndColor: String
     var borderLeftColor: String
     var borderLeftWidth: Int
-    var borderRadius: String
+    var borderRadius: Number
     var backgroundColor: String
     var borderRightWidth: Int
     var borderStartColor: String
     var borderStyle: String
     var borderTopColor: String
-    var borderTopEndRadius: String
-    var borderTopLeftRadius: String
-    var borderTopRightRadius: String
-    var borderTopStartRadius: String
+    var borderTopEndRadius: Number
+    var borderTopLeftRadius: Number
+    var borderTopRightRadius: Number
+    var borderTopStartRadius: Number
     var borderTopWidth: Int
     var borderWidth: Int
-    var opacity: String
+    var opacity: Number
     var elevation: String
 }
 
-external interface ShadowStyle {
+external interface ShadowStyle {//iOS
     var shadowColor: String
-    var shadowOffset: String
-    var shadowOpacity: String
-    var shadowRadius: String
+    var shadowOffset: dynamic//object: {width: number,height: number}
+    var shadowOpacity: Number
+    var shadowRadius: Number
 }
 
 
@@ -212,6 +276,6 @@ external interface TextStyle {
 }
 
 
-external interface Style : ViewStyle, TextStyle, LayoutStyle, ShadowStyle
+external interface Style : ViewStyle, TextStyle, LayoutStyle, ShadowStyle, ImageStyle, TransformStyle
 
 
