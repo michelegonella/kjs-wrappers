@@ -1,11 +1,11 @@
 package com.nominanuda.krui.react.native
 
 import kotlinext.js.jsObject
-import react.native.Dimensions
-import react.native.PixelRatio
-import react.native.Style
+import react.*
+import react.native.*
 
 inline fun mkStyle(builder: Style.() -> Unit): Style = jsObject(builder)
+
 
 typealias FlexDirection = String
 val row : FlexDirection = "row"
@@ -23,3 +23,14 @@ fun heightPercentageToDP(heightPercent : Double) : Double {
     return PixelRatio.roundToNearestPixel(screenHeight * heightPercent / 100)
 }
 
+fun RBuilder.View(handler: RHandler<ViewProps>) : ReactElement = child(ViewComponent::class, handler)
+
+fun RBuilder.Text(handler: RHandler<TextProps>) : ReactElement = child(TextComponent::class, handler)
+
+fun RBuilder.Button(handler: RHandler<ButtonProps>) : ReactElement = child(ButtonComponent::class, handler)
+
+fun RBuilder.FlatList(handler: RHandler<FlatListProps>) : ReactElement = child(FlatListComponent::class, handler)
+
+fun RBuilder.ScrollView(handler: RHandler<ScrollViewProps>) : ReactElement = child(ScrollViewComponent::class, handler)
+
+fun RBuilder.SectionList(handler: RHandler<SectionListProps>) : ReactElement = child(SectionListComponent::class, handler)

@@ -1,6 +1,6 @@
 ext {
     // External dependencies
-    kotlin_version = '1.2.40'
+    kotlin_version = '1.2.50'
     node_plugin_version = '1.2.0'
     bintray_plugin_version = '1.8.0'
     kotlinx_html_version = '0.6.9'
